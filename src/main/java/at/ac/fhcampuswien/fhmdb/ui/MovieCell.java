@@ -1,5 +1,6 @@
 package at.ac.fhcampuswien.fhmdb.ui;
 
+import at.ac.fhcampuswien.fhmdb.controllers.WatchlistViewController;
 import at.ac.fhcampuswien.fhmdb.models.Movie;
 import com.jfoenix.controls.JFXButton;
 import javafx.geometry.Insets;
@@ -10,6 +11,7 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class MovieCell extends ListCell<Movie> {
@@ -17,7 +19,9 @@ public class MovieCell extends ListCell<Movie> {
     private final Label detail = new Label();
     private final Label genre = new Label();
     private final JFXButton detailBtn = new JFXButton("Show Details");
-    private final VBox layout = new VBox(title, detail, genre, detailBtn);
+    private final JFXButton watchlBtn = new JFXButton("Watchlist");
+    private final VBox layout = new VBox(title, detail, genre, watchlBtn ,detailBtn );
+
     private boolean collapsedDetails = true;
 
     public MovieCell() {
@@ -37,6 +41,14 @@ public class MovieCell extends ListCell<Movie> {
         layout.spacingProperty().set(10);
         layout.alignmentProperty().set(javafx.geometry.Pos.CENTER_LEFT);
 
+        //für Watchlistbutton
+        watchlBtn.setStyle("-fx-background-color: #f5c518;");
+        title.getStyleClass().add("text-yellow");
+        detail.getStyleClass().add("text-white");
+        genre.getStyleClass().add("text-white");
+        genre.setStyle("-fx-font-style: italic");
+        layout.setBackground(new Background(new BackgroundFill(Color.web("#454545"), null, null)));
+
         detailBtn.setOnMouseClicked(mouseEvent -> {
             if (collapsedDetails) {
                 layout.getChildren().add(getDetails());
@@ -49,6 +61,12 @@ public class MovieCell extends ListCell<Movie> {
             }
             setGraphic(layout);
         });
+
+
+
+        watchlBtn.setText("Add to watchlist");
+
+
     }
 
     private VBox getDetails() {
