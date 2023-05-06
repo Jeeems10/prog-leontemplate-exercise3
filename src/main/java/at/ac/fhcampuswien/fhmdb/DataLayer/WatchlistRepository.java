@@ -23,6 +23,6 @@ public class WatchlistRepository {
     }
 
     public List<WatchlistEntity> getAll() throws SQLException {
-        return dao.queryForAll();
+        return dao.queryForAll(); // sollte mir vll durchlesen, was das macht
     }
 }

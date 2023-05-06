@@ -3,6 +3,7 @@ module at.ac.fhcampuswien.fhmdb {
     requires javafx.fxml;
     requires ormlite.jdbc; //das hinzugefügt
     requires java.sql; //SQL Exception
+    requires com.h2database; // + libraries addn
 
     requires com.jfoenix;
     requires okhttp3;
