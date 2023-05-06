@@ -13,6 +13,7 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -68,11 +69,20 @@ public class MovieCell extends ListCell<Movie> {
             setGraphic(layout);
         });
 
-        /*watchlBtn.setOnMouseClicked(mouseEvent -> {
-            if(getItem() instanceof )
-            repository.addToWatchlist(getItem());
+        watchlBtn.setOnMouseClicked(mouseEvent -> {
+            try {
+                repository.addToWatchlist(getItem());
+            }catch (SQLException e){
+                throw new RuntimeException(e);
+            }
+
+            /*if(getItem() instanceof Movie ){
+                Movie clickedMovie =(Movie) getItem();
+
+            }*/
+
            // Database.getDatabase().getDao().create();
-        });*/
+        });
 
 
     }

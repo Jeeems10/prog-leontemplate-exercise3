@@ -1,5 +1,6 @@
 package at.ac.fhcampuswien.fhmdb.DataLayer;
 
+import at.ac.fhcampuswien.fhmdb.models.Movie;
 import com.j256.ormlite.dao.Dao;
 
 import java.sql.SQLException;
@@ -12,8 +13,8 @@ public class WatchlistRepository {
         this.dao = Database.getDatabase().getDao();
     }
 
-    public void  addToWatchlist(WatchlistEntity movie) throws SQLException {
-        WatchlistEntity movies = new WatchlistEntity( movie.getApiId(), movie.getTitle(), movie.getDescription(), movie.getGenres(), movie.getReleaseYear(), movie.getImgUrl(), movie.getLengthInMinutes(), movie.getRating());
+    public void  addToWatchlist(Movie movie) throws SQLException {
+        WatchlistEntity movies = new WatchlistEntity("ey", movie.getTitle(), movie.getDescription(), "movie.getGenres()", movie.getReleaseYear(), movie.getImgUrl(), movie.getLengthInMinutes(), movie.getRating());
         dao.create(movies);
     }
 

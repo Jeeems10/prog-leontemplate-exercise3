@@ -84,4 +84,19 @@ public class WatchlistEntity {
     public double getRating() {
         return rating;
     }
+
+    @Override
+    public String toString() {
+        return "WatchlistEntity{" +
+                "id=" + id +
+                ", apiId='" + apiId + '\'' +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", genres='" + genres + '\'' +
+                ", releaseYear=" + releaseYear +
+                ", imgUrl='" + imgUrl + '\'' +
+                ", lengthInMinutes=" + lengthInMinutes +
+                ", rating=" + rating +
+                '}';
+    }
 }

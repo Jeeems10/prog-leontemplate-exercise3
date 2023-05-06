@@ -267,11 +267,11 @@ public class HomeController implements Initializable {
                 .collect(Collectors.toList());
     }
 
-    public void loadHomeview(){
+    public void loadHomeView(){
         System.out.println("Zurück zum Bildschirm");
     };
 
-    public void loadWatchlistview(){
+    public void loadWatchlistView(){
         FXMLLoader fxmlLoader = new FXMLLoader(FhmdbApplication.class.getResource("watchlist-view.fxml"));
         try {
             Scene scene = new Scene(fxmlLoader.load(), 890, 620);
@@ -286,7 +286,8 @@ public class HomeController implements Initializable {
         }
     };
 
-    public void loadAboutview(){
+    public void loadAboutView(){
         System.out.println("About us");
     };
+
 }
