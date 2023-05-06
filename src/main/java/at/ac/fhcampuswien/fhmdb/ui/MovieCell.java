@@ -1,5 +1,7 @@
 package at.ac.fhcampuswien.fhmdb.ui;
 
+import at.ac.fhcampuswien.fhmdb.DataLayer.Database;
+import at.ac.fhcampuswien.fhmdb.DataLayer.WatchlistRepository;
 import at.ac.fhcampuswien.fhmdb.controllers.WatchlistViewController;
 import at.ac.fhcampuswien.fhmdb.models.Movie;
 import com.jfoenix.controls.JFXButton;
@@ -24,10 +26,13 @@ public class MovieCell extends ListCell<Movie> {
 
     private boolean collapsedDetails = true;
 
+    WatchlistRepository repository = new WatchlistRepository();
+
     public MovieCell() {
         super();
         // color scheme
         detailBtn.setStyle("-fx-background-color: #f5c518;");
+        watchlBtn.setStyle("-fx-background-color: #f5c518;"); // macht genau das gleiche...
         title.getStyleClass().add("text-yellow");
         detail.getStyleClass().add("text-white");
         genre.getStyleClass().add("text-white");
@@ -41,13 +46,14 @@ public class MovieCell extends ListCell<Movie> {
         layout.spacingProperty().set(10);
         layout.alignmentProperty().set(javafx.geometry.Pos.CENTER_LEFT);
 
-        //für Watchlistbutton
+        /*//für Watchlistbutton
         watchlBtn.setStyle("-fx-background-color: #f5c518;");
         title.getStyleClass().add("text-yellow");
         detail.getStyleClass().add("text-white");
         genre.getStyleClass().add("text-white");
         genre.setStyle("-fx-font-style: italic");
-        layout.setBackground(new Background(new BackgroundFill(Color.web("#454545"), null, null)));
+        layout.setBackground(new Background(new BackgroundFill(Color.web("#454545"), null, null)));*/
+
 
         detailBtn.setOnMouseClicked(mouseEvent -> {
             if (collapsedDetails) {
@@ -55,16 +61,18 @@ public class MovieCell extends ListCell<Movie> {
                 collapsedDetails = false;
                 detailBtn.setText("Hide Details");
             } else {
-                layout.getChildren().remove(4);
+                layout.getChildren().remove(5); // aber warum 5?
                 collapsedDetails = true;
                 detailBtn.setText("Show Details");
             }
             setGraphic(layout);
         });
 
-
-
-        watchlBtn.setText("Add to watchlist");
+        /*watchlBtn.setOnMouseClicked(mouseEvent -> {
+            if(getItem() instanceof )
+            repository.addToWatchlist(getItem());
+           // Database.getDatabase().getDao().create();
+        });*/
 
 
     }
